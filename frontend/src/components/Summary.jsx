@@ -24,7 +24,7 @@ const Summary = ({ selectedDocuments }) => {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 w-full">
       <div className="card">
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-lg font-semibold text-gray-900">Document Summaries</h2>

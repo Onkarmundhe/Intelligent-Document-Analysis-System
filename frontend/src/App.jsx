@@ -16,7 +16,7 @@ function App() {
   ]
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen flex flex-col bg-gray-50">
       {/* Header */}
       <header className="bg-white shadow-sm border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -69,55 +69,32 @@ function App() {
       </nav>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-          {/* Sidebar - Document List */}
-          <div className="lg:col-span-1">
-            <div className="space-y-6">
-              <DocumentUpload />
+      <main className="flex-grow py-8">
+        {activeTab === 'documents' && (
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            <div className="lg:col-span-1">
               <DocumentList 
                 selectedDocuments={selectedDocuments}
                 onSelectionChange={setSelectedDocuments}
               />
             </div>
+            <div className="lg:col-span-3">
+              <DocumentUpload />
+            </div>
           </div>
+        )}
 
-          {/* Main Content Area */}
-          <div className="lg:col-span-3">
-            {activeTab === 'documents' && (
-              <div className="card">
-                <h2 className="text-lg font-semibold text-gray-900 mb-4">
-                  Document Management
-                </h2>
-                <p className="text-gray-600">
-                  Upload documents using the sidebar, then select them to start asking questions or generate summaries.
-                </p>
-                {selectedDocuments.length > 0 && (
-                  <div className="mt-4 p-4 bg-primary-50 rounded-lg">
-                    <p className="text-primary-700 font-medium">
-                      {selectedDocuments.length} document(s) selected
-                    </p>
-                    <p className="text-primary-600 text-sm mt-1">
-                      Switch to Chat or Summary tab to analyze these documents.
-                    </p>
-                  </div>
-                )}
-              </div>
-            )}
+        {activeTab === 'chat' && (
+          <ChatInterface selectedDocuments={selectedDocuments} />
+        )}
 
-            {activeTab === 'chat' && (
-              <ChatInterface selectedDocuments={selectedDocuments} />
-            )}
-
-            {activeTab === 'summary' && (
-              <Summary selectedDocuments={selectedDocuments} />
-            )}
-          </div>
-        </div>
+        {activeTab === 'summary' && (
+          <Summary selectedDocuments={selectedDocuments} />
+        )}
       </main>
 
       {/* Footer */}
-      <footer className="bg-white border-t border-gray-200 mt-12">
+      <footer className="bg-white border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex justify-between items-center">
             <p className="text-sm text-gray-500">

@@ -49,7 +49,7 @@ const ChatInterface = ({ selectedDocuments }) => {
   }
 
   return (
-    <div className="card h-[600px] flex flex-col">
+    <div className="card flex flex-col w-full">
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-lg font-semibold text-gray-900">Chat with Documents</h2>
         {selectedDocuments.length > 0 && (
