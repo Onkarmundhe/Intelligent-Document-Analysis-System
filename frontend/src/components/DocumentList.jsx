@@ -92,7 +92,7 @@ const DocumentList = ({ selectedDocuments, onSelectionChange }) => {
   }
 
   return (
-    <div className="card">
+    <div className="card h-full">
       <div className="flex justify-between items-center mb-4">
         <h3 className="font-semibold text-gray-900">Documents</h3>
         <span className="text-sm text-gray-500">
